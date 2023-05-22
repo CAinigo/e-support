@@ -32,17 +32,21 @@ Route::get('/', function () {
 Route::get('/register', [RegisterController::class, 'toRegister'])->name('toRegister');
 
 // route for creating user
-Route::post('/create', [RegisterController::class, 'create'])->name('register');
+Route::post('/register', [RegisterController::class, 'create'])->name('register');
 
 // route to validate inputed login credentials
-Route::post('/process', [LoginController::class, 'login'])->name('login');
+Route::post('/', [LoginController::class, 'login'])->name('login');
 
 // route for logout
-Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 // Admin Routes
 Route::middleware('admin')->group(function(){
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin');
+    Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/admin/message', [AdminController::class, 'message'])->name('message');
+    Route::get('/admin/accounts', [AdminController::class, 'accounts'])->name('accounts');
+    Route::get('/admin/barangay-officials', [AdminController::class, 'officials'])->name('officials');
 });
 
 // Sub-Admin Routes
