@@ -12,11 +12,11 @@ class LoginController extends Controller
         $input = $request->all();
 
         $this->validate($request, [
-            'username' => 'required',
-            'password' => 'required',
+            'Username' => 'required',
+            'Password' => 'required',
         ]);
 
-        if(auth()->attempt(array('username' => $input['username'], 'password' => $input['password'])) || auth()->attempt(array('email' => $input['username'], 'password' => $input['password'])))
+        if(auth()->attempt(array('username' => $input['Username'], 'password' => $input['Password'])) || auth()->attempt(array('email' => $input['Username'], 'password' => $input['Password'])))
         {
             if (auth()->user()->role == '0') {
                 return redirect()->route('admin');

@@ -1,0 +1,1 @@
+<h1>This is business establishments page</h1>

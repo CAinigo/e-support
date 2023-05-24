@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="{{ asset('css/welcome/welcome.css') }}">
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+  <script defer src="{{ asset('js/registerValidation.js') }}"></script>
 
 </head>
 <body class="welcome-bg">
@@ -147,11 +150,11 @@
                     @endif
   
                     <div class="row mb-3">
-                      <label for="username" class="">Username</label>
+                      <label for="username" class="">Emali or Username</label>
                       <div class="col-md-12">
-                        <input type="text" id="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
+                        <input type="text" id="username" class="form-control @error('Username') is-invalid @enderror" name="Username" value="{{ old('Username') }}" autocomplete="username" autofocus>
   
-                        @error('username')
+                        @error('Username')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -161,9 +164,9 @@
                     <div class="row mb-4">
                       <label for="password" class="">Password</label>
                       <div class="col-md-12">
-                        <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
+                        <input type="password" id="password" class="form-control @error('Password') is-invalid @enderror" name="Password" autocomplete="current-password">
   
-                        @error('password')
+                        @error('Password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -178,7 +181,11 @@
                   </form>
                   <div class="d-flex justify-content-around w-75 my-3">
                     <a href="#" class="text-decoration-none text-color">Forgot Password?</a>
-                    <a href="{{ route('toRegister') }}" class="text-decoration-none text-color">Create an Account</a>
+                    {{-- <a href="{{ route('toRegister') }}" class="text-decoration-none text-color">Create an Account</a> --}}
+                    <!-- Button trigger modal -->
+                    <p class="text-color" data-bs-toggle="modal" data-bs-target="#registerModal">
+                      Create an Account
+                    </p>
                   </div>
                 </div>
               </div>
@@ -242,6 +249,162 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+      <div class="modal-dialog register-modal">
+        <div class="modal-content register-content">
+          <div class="modal-header py-2 bg-warning">
+            <h1 class="modal-title fs-5" id="registerModalLabel">Register</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form id="register-form" action="{{ route('register') }}" method="POST">
+            <div class="modal-body">
+              @csrf
+              <div class="row mb-4">
+                <div class="col-3">
+                  <label for="lname" class="">Last Name</label>
+                  <div class="col-md-12">
+                    <input type="text" id="lname" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" autocomplete="lname" autofocus>
+
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <label for="fname" class="">First Name</label>
+                  <div class="col-md-12">
+                    <input type="text" id="fname" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" autocomplete="fname" autofocus>
+
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <label for="mname" class="">Middle Name</label>
+                  <div class="col-md-12">
+                    <input type="text" id="mname" class="form-control @error('middle_name') is-invalid @enderror" name="middle_name" value="{{ old('middle_name') }}" autocomplete="mname" autofocus>
+      
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <label for="sname" class="">Suffix (optional)</label>
+                  <div class="col-md-12">
+                    <input type="text" id="sname" class="form-control @error('suffix_name') is-invalid @enderror" name="suffix_name" value="{{ old('suffix_name') }}" autocomplete="sname" autofocus>
+      
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-3">
+                  <label for="bday" class="">Birthday</label>
+                  <div class="col-md-12">
+                    <input type="date" id="bday" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" autocomplete="bday" autofocus>
+      
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <label for="gender" class="">Gender</label>
+                  <div class="col-md-12">
+                    <select id="gender" class="form-select @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" autocomplete="gender" autofocus>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+      
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+                <div class="col-2">
+                  <label for="zone" class="">Zone</label>
+                  <div class="col-md-12">
+                    <select id="zone" class="form-select @error('zone') is-invalid @enderror" name="zone" value="{{ old('zone') }}" autocomplete="zone" autofocus>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+      
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <label for="e_status" class="">Employment Status</label>
+                  <div class="col-md-12">
+                    <select id="e_status" class="form-select @error('e_status') is-invalid @enderror" name="e_status" value="{{ old('e_status') }}" autocomplete="e_status" autofocus>
+                      <option value="employed">Employed</option>
+                      <option value="unemployed">Unemployed</option>
+                    </select>
+      
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-4">
+                  <label for="c_status" class="">Civil Status</label>
+                  <div class="col-md-12">
+                    <select id="c_status" class="form-select @error('c_status') is-invalid @enderror" name="c_status" value="{{ old('c_status') }}" autocomplete="c_status" autofocus>
+                      <option value="single">Single</option>
+                      <option value="married">Married</option>
+                      <option value="divorced">Divorced</option>
+                      <option value="separated">Separated</option>
+                      <option value="widowed">Widowed</option>
+                    </select>
+      
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <label for="contact" class="">Contact No.</label>
+                  <div class="col-md-12">
+                    <input type="tel" id="contact" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" autocomplete="contact" autofocus>
+      
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <label for="email" class="">Email</label>
+                  <div class="col-md-12">
+                    <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+      
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-4">
+                  <label for="reg_username" class="">Username</label>
+                  <div class="col-md-12">
+                    <input type="text" id="reg_username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
+      
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <label for="reg_password" class="">Password</label>
+                  <div class="col-md-12">
+                    <input type="password" id="reg_password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+      
+                        <span class="invalid-feedback" role="alert"></span>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <label for="password-confirm" class="">Confirm Password</label>
+                  <div class="col-md-12">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input id="reg-btn" value="Register" type="submit" class="btn btn-warning">
+            </div>
+          </form>
         </div>
       </div>
     </div>

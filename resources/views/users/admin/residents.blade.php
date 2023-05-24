@@ -1,0 +1,1 @@
+<h1>This is Residents page</h1>

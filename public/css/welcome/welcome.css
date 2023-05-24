@@ -20,7 +20,9 @@ html {
 
 .text-color {
   color: #0000FF;
+  cursor: pointer;
 }
+
 /* .navbar {
   padding: 0;
 } */
@@ -50,10 +52,23 @@ html {
   border: none;
 }
 
+.register-modal {
+  --bs-modal-width: 75%;
+}
+
+.register-content {
+  background-color: #E7EEFB;
+}
+
 @media (max-width: 991px) {
   /* .ul-bg {
     background-color: #2d182e;
   } */
+
+  .register-modal {
+    --bs-modal-width: 100%;
+  }
+
   #logout-flash {
     width: 70%;
   }

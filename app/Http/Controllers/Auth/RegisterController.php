@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -16,12 +17,13 @@ class RegisterController extends Controller
 
     public function create(Request $request)
     {
-        $validated = $request->validate([
-            'lname' => ['required', 'string', 'max:255'],
-            'fname' => ['required', 'string', 'max:255'],
-            'mname' => ['required', 'string', 'max:255'],
-            'sname' => ['nullable', 'string', 'max:255'],
-            'bday' => ['required', 'date', 'max:255'],
+        $validated = Validator::make($request->all(),
+        [
+            'last_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'middle_name' => ['required', 'string', 'max:255'],
+            'suffix_name' => ['nullable', 'string', 'max:255'],
+            'birthday' => ['required', 'date', 'max:255'],
             'c_status' => ['required', 'string', 'max:255'],
             'gender' => ['required', 'string', 'max:255'],
             'zone' => ['required', 'string', 'max:255'],
@@ -32,9 +34,37 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $validated['password'] = bcrypt($validated['password']);
+        if($validated->fails()){
+            return response()->json([
+                'status' => 400,
+                'messages' => $validated->getMessageBag()
+            ]);
+        }else{
+            $user = new User();
+            $user->lname = $request->last_name;
+            $user->fname = $request->first_name;
+            $user->mname = $request->middle_name;
+            $user->sname = $request->suffix_name;
+            $user->bday = $request->birthday;
+            $user->c_status = $request->c_status;
+            $user->gender = $request->gender;
+            $user->zone = $request->zone;
+            $user->e_status = $request->e_status;
+            $user->contact = $request->contact;
+            $user->email = $request->email;
+            $user->username = $request->username;
+            $user->password = Hash::make($request->password);
+            $user->save();
 
-        User::create($validated);
+            return response()->json([
+                'status' => 200,
+                'messages' => 'Registerd successfully!'
+            ]);
+        }
+
+        // $validated['password'] = bcrypt($validated['password']);
+
+        // User::create($validated);
 
         // User::create([
         //     'lname' => $validated['lname'],
@@ -52,6 +82,6 @@ class RegisterController extends Controller
         //     'password' => Hash::make($validated['password']),
         // ]);
 
-        return redirect()->route('welcome')->with('registered', 'You have successfully registered. Wait for the admin for the approval of your account');
+        // return redirect()->route('welcome')->with('registered', 'You have successfully registered. Wait for the admin for the approval of your account');
     }
 }

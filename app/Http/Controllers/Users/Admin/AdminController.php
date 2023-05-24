@@ -31,4 +31,24 @@ class AdminController extends Controller
     {
         return view('users.admin.barangayOfficials');
     }
+
+    public function residents()
+    {
+        return view('users.admin.residents');
+    }
+
+    public function establishments()
+    {
+        return view('users.admin.establishments');
+    }
+
+    public function users()
+    {
+        return view('users.admin.users');
+    }
+
+    public function approval()
+    {
+        return view('users.admin.userApproval');
+    }
 }

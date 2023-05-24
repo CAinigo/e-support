@@ -44,9 +44,16 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 Route::middleware('admin')->group(function(){
     Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    // Route::get('/admin/{data}', function($data){
+    //     echo "This is " . $data;
+    // })->name('dashboard');
     Route::get('/admin/message', [AdminController::class, 'message'])->name('message');
     Route::get('/admin/accounts', [AdminController::class, 'accounts'])->name('accounts');
     Route::get('/admin/barangay-officials', [AdminController::class, 'officials'])->name('officials');
+    Route::get('/admin/residents', [AdminController::class, 'residents'])->name('residents');
+    Route::get('/admin/business-establishments', [AdminController::class, 'establishments'])->name('establishments');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/admin/user-approval', [AdminController::class, 'approval'])->name('approval');
 });
 
 // Sub-Admin Routes
