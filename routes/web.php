@@ -1,16 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Users\Admin\AdminController;
 use App\Http\Controllers\Users\BHW\BHWController;
+use App\Http\Controllers\Users\Admin\AdminController;
 use App\Http\Controllers\Users\Company\CompanyController;
-use App\Http\Controllers\Users\ForApproval\ForApprovalController;
 use App\Http\Controllers\Users\Resident\ResidentController;
 use App\Http\Controllers\Users\SubAdmin\SubAdminController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Users\ForApproval\ForApprovalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,17 +28,61 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+
 // route to register page
-Route::get('/register', [RegisterController::class, 'toRegister'])->name('toRegister');
+// Route::get('/register', [RegisterController::class, 'toRegister'])->name('toRegister');
+
 
 // route for creating user
 Route::post('/register', [RegisterController::class, 'create'])->name('register');
 
+// route for redirecting register get method
+Route::get('/register', function(){
+    if(Auth::check()){
+        return back();
+    }else{
+        return redirect()->route('welcome');
+    }
+});
+
+
+// route for creating user
+Route::post('/register-company', [RegisterController::class, 'createCompany'])->name('register.company');
+
+// route for redirecting register get method
+Route::get('/register-company', function(){
+    if(Auth::check()){
+        return back();
+    }else{
+        return redirect()->route('welcome');
+    }
+});
+
+
 // route to validate inputed login credentials
-Route::post('/', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+// route for redirecting login get method
+Route::get('/login', function(){
+    if(Auth::check()){
+        return back();
+    }else{
+        return redirect()->route('welcome');
+    }
+});
 
 // route for logout
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+// route for redirecting logout get method
+Route::get('/logout', function(){
+    if(Auth::check()){
+        return back();
+    }else{
+        return redirect()->route('welcome');
+    }
+});
+
 
 // Admin Routes
 Route::middleware('admin')->group(function(){
@@ -56,25 +100,30 @@ Route::middleware('admin')->group(function(){
     Route::get('/admin/user-approval', [AdminController::class, 'approval'])->name('approval');
 });
 
+
 // Sub-Admin Routes
 Route::middleware('sub-admin')->group(function(){
     Route::get('/sub-admin/dashboard', [SubAdminController::class, 'dashboard'])->name('sub-admin');
 });
+
 
 // BHW Routes
 Route::middleware('bhw')->group(function(){
     Route::get('/bhw/dashboard', [BHWController::class, 'dashboard'])->name('bhw');
 });
 
+
 // Resident Routes
 Route::middleware('resident')->group(function(){
     Route::get('/resident/dashboard', [ResidentController::class, 'dashboard'])->name('resident');
 });
 
+
 // Company Routes
 Route::middleware('company')->group(function(){
     Route::get('/company/dashboard', [CompanyController::class, 'dashboard'])->name('company');
 });
+
 
 // For-Approval Routes
 Route::middleware('for-approval')->group(function(){

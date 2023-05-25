@@ -27,7 +27,7 @@
       <hr class="mx-auto text-white border-2 horizontal-line">
       <ul id="sidebar-list" class="navbar-nav">
         <li class="nav-item text-white sidebar-list">
-          <a href="#" data-target="{{ route('dashboard') }}" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list navigate-active ajax-navigate">
+          <a href="#" id="dashboard" data-target="dashboard" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list navigate-active ajax-navigate">
             <div class="container-fluid row p-0 ps-2 m-0">
               <span class="material-symbols-outlined col-3 text-center">dashboard</span>
               <p class="col-9 m-0 ps-0">Dashboard</p>
@@ -44,21 +44,21 @@
           </a>
           <ul id="p-sub-menu" class="navbar-nav text-white p-submenu">
             <li class="nav-item">
-              <a href="#" data-target="{{ route('officials') }}" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
+              <a href="#" id="officials" data-target="barangay-officials" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
                 <div class="container-fluid row p-0 ps-2 m-0">
                   <p class="col-12 m-0 ms-3 ps-5">Barangay Officials</p>
                 </div>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" data-target="{{ route('residents') }}" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
+              <a href="#" id="residents" data-target="residents" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
                 <div class="container-fluid row p-0 ps-2 m-0">
                   <p class="col-12 m-0 ms-3 ps-5">Residents</p>
                 </div>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" data-target="{{ route('establishments') }}" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
+              <a href="#" id="establishments" data-target="business-establishments" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
                 <div class="container-fluid row p-0 ps-2 m-0">
                   <p class="col-12 m-0 ms-3 ps-5">Business Establishments</p>
                 </div>
@@ -76,14 +76,14 @@
           </a>
           <ul id="u-sub-menu" class="navbar-nav text-white u-submenu">
             <li class="nav-item">
-              <a href="#" data-target="{{ route('users') }}" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
+              <a href="#" id="users" data-target="users" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
                 <div class="container-fluid row p-0 ps-2 m-0">
                   <p class="col-12 m-0 ms-3 ps-5">Users</p>
                 </div>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" data-target="{{ route('approval') }}" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
+              <a href="#" id="approval" data-target="user-approval" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
                 <div class="container-fluid row p-0 ps-2 m-0">
                   <p class="col-12 m-0 ms-3 ps-5">User Approval</p>
                 </div>
@@ -92,7 +92,7 @@
           </ul>
         </li>
         <li class="nav-item text-white sidebar-list">
-          <a href="#" data-target="{{ route('message') }}" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
+          <a href="#" id="message" data-target="message" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
             <div class="container-fluid row p-0 ps-2 m-0">
               <span class="material-symbols-outlined col-3 text-center">chat</span>
               <p class="col-9 m-0 ps-0">Message</p>
@@ -100,7 +100,7 @@
           </a>
         </li>
         <li class="nav-item text-white sidebar-list">
-          <a href="#" data-target="{{ route('accounts') }}" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
+          <a href="#" id="accounts" data-target="accounts" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
             <div class="container-fluid row p-0 ps-2 m-0">
               <span class="material-symbols-outlined col-3 text-center">manage_accounts</span>
               <p class="col-9 m-0 ps-0">Accounts</p>
@@ -136,6 +136,7 @@
       </nav>
 
       <main>
+        <div id="content-loader"></div>
         <div id="content">
           @include('users.admin.dashboard')
         </div>

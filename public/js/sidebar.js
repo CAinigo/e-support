@@ -43,19 +43,19 @@ uSubmenuTgl.addEventListener('click', () => {
 });
 
 // sidebar active navigation/indicator
-const navigationLists = document.getElementsByClassName('nav-list');
+// const navigationLists = document.getElementsByClassName('nav-list');
 
-for(let i = 0; i < navigationLists.length; i++){
-  navigationLists[i].addEventListener('click', () => {
-    if(navigationLists[i].classList.contains('navigate-active')){
-      return;
-    }else{
-      for(let j = 0; j < navigationLists.length; j++) {
-        if(navigationLists[j].classList.contains('navigate-active')){
-          navigationLists[j].classList.remove('navigate-active');
-        }
-      }
-      navigationLists[i].classList.add('navigate-active');
-    }
-  });
-}
+// for(let i = 0; i < navigationLists.length; i++){
+//   navigationLists[i].addEventListener('click', () => {
+//     if(navigationLists[i].classList.contains('navigate-active')){
+//       return;
+//     }else{
+//       for(let j = 0; j < navigationLists.length; j++) {
+//         if(navigationLists[j].classList.contains('navigate-active')){
+//           navigationLists[j].classList.remove('navigate-active');
+//         }
+//       }
+//       navigationLists[i].classList.add('navigate-active');
+//     }
+//   });
+// }
