@@ -20,7 +20,7 @@ class ForApproval
             return redirect()->route('welcome');
         }
 
-        if(auth()->user()->role == '5'){
+        if(auth()->user()->role == '5' || auth()->user()->role == '6'){
             return $next($request);
         }
 

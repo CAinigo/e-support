@@ -1,3 +1,4 @@
+// resident register
 $(function(){
   $('#register-form').submit(function(e){
     e.preventDefault();
@@ -62,6 +63,8 @@ function showMessage(type, message){
   </div>`
 }
 
+
+// company register
 $(function(){
   $('#company-form').submit(function(e){
     e.preventDefault();

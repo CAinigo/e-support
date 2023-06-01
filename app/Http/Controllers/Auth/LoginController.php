@@ -28,7 +28,7 @@ class LoginController extends Controller
                 return redirect()->route('resident');
             }else if (auth()->user()->role == '4') {
                 return redirect()->route('company');
-            }else if (auth()->user()->role == '5') {
+            }else if (auth()->user()->role == '5' || auth()->user()->role == '6') {
                 return redirect()->route('for-approval');
             }else {
                 return redirect()->route('welcome')->with('error', 'Something went wrong, Please try again.');

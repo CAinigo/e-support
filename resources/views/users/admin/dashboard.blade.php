@@ -1,5 +1,5 @@
 <div class="container-fluid px-5 pb-5">
-  <div class="row my-5">
+  <div class="row mt-5 mb-2">
     <div class="col-4">
       <div class="card pt-3 card-container">
         <div class="rounded-circle card-icon-container">
@@ -35,7 +35,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="container-fluid bg-white rounded p-4">
+    @extends('users.admin.barangayOfficials')
+    {{-- <div class="container-fluid bg-white rounded p-4">
       <div class="d-flex align-items-center pt-3 pb-5">
         <span class="material-symbols-outlined add-icon fs-2 me-3">groups</span>
         <button class="bg-transparent border-1 rounded px-3">Add</button>
@@ -120,6 +121,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </div> --}}
   </div>
 </div>

@@ -12,9 +12,11 @@
 
   <link rel="stylesheet" href="{{ asset('css/admin/adminLayout.css') }}">
   <link rel="stylesheet" href="{{ asset('css/admin/adminDashboard.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/admin/adminOfficials.css') }}">
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/0541fe1713.js" crossorigin="anonymous"></script>
 
   <script defer src="{{ asset('js/navigate.js') }}"></script>
   <script defer src="{{ asset('js/sidebar.js') }}"></script>
@@ -104,6 +106,14 @@
             <div class="container-fluid row p-0 ps-2 m-0">
               <span class="material-symbols-outlined col-3 text-center">manage_accounts</span>
               <p class="col-9 m-0 ps-0">Accounts</p>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item text-white sidebar-list">
+          <a href="#" id="archive" data-target="archive" class="nav-link p-0 d-flex align-items-center sidebar-navigate nav-list ajax-navigate">
+            <div class="container-fluid row p-0 ps-2 m-0">
+              <span class="material-symbols-outlined col-3 text-center">archive</span>
+              <p class="col-9 m-0 ps-0">Archive</p>
             </div>
           </a>
         </li>

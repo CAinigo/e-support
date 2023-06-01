@@ -52,6 +52,7 @@ class RegisterController extends Controller
             $user->e_status = $request->e_status;
             $user->contact = $request->contact;
             $user->email = $request->email;
+            $user->role = 5;
             $user->username = $request->username;
             $user->password = Hash::make($request->password);
             $user->save();
@@ -93,7 +94,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'middle_name' => ['required', 'string', 'max:255'],
             'suffix_name' => ['nullable', 'string', 'max:255'],
-            'business_name' => ['required', 'date', 'max:255'],
+            'business_name' => ['required', 'string', 'max:255'],
             'type_of_business' => ['required', 'string', 'max:255'],
             'zone' => ['required', 'string', 'max:255'],
             'contact' => ['required', 'string', 'max:13', 'unique:users'],
@@ -113,11 +114,12 @@ class RegisterController extends Controller
             $user->fname = $request->first_name;
             $user->mname = $request->middle_name;
             $user->sname = $request->suffix_name;
-            $user->business_name = $request->business_name;
-            $user->type_of_business = $request->type_of_business;
             $user->zone = $request->zone;
+            $user->biz_name = $request->business_name;
+            $user->biz_type = $request->type_of_business;
             $user->contact = $request->contact;
             $user->email = $request->email;
+            $user->role = 6;
             $user->username = $request->username;
             $user->password = Hash::make($request->password);
             $user->save();

@@ -44,6 +44,10 @@ $(document).ready(function(){
             container.removeClass('d-none');
             contLoader.removeClass('custom-loader');
             break;
+          case 'archive': 
+            container.removeClass('d-none');
+            contLoader.removeClass('custom-loader');
+            break;
           default :
             container.removeClass('d-none');
             contLoader.removeClass('custom-loader');
@@ -69,6 +73,8 @@ $(document).ready(function(){
         case 'message': $('#message').addClass('navigate-active');
           break;
         case 'accounts': $('#accounts').addClass('navigate-active');
+          break;
+        case 'archive': $('#archive').addClass('navigate-active');
           break;
         default :
           console.log('404');

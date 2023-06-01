@@ -40,7 +40,7 @@ class BHW
             return redirect()->route('company');
         }
 
-        if(auth()->user()->role == '5'){
+        if(auth()->user()->role == '5' || auth()->user()->role == '6'){
             return redirect()->route('for-approval');
         }
     }

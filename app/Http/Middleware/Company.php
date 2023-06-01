@@ -40,7 +40,7 @@ class Company
             return redirect()->route('admin');
         }
 
-        if(auth()->user()->role == '5'){
+        if(auth()->user()->role == '5' || auth()->user()->role == '6'){
             return redirect()->route('for-approval');
         }
     }

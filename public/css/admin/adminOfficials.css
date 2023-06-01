@@ -1,0 +1,59 @@
+.register-modal {
+  --bs-modal-width: 75%;
+}
+
+.register-content {
+  background-color: #E7EEFB;
+}
+
+.btn-close:focus {
+  box-shadow: none;
+}
+
+.official-reg-header1 {
+  background-color: #432344;
+  height: 1.5rem;
+}
+
+.default-img{
+  height: 10rem;
+  width: 10rem;
+}
+
+#profile-container {
+  height: 10rem;
+  width: 10rem;
+  background-position: center;
+  background-size: cover;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1');
+}
+
+.profile-size {
+  height: 5rem;
+  width: 5rem;
+}
+
+.view-btn {
+  cursor: pointer;
+  color: #3887D0;
+}
+
+.edit-btn {
+  cursor: pointer;
+  color: #FFB800;
+}
+
+.delete-btn {
+  cursor: pointer;
+  color: #FF2020;
+}
+
+@media (max-width: 991px) {
+  /* .ul-bg {
+    background-color: #2d182e;
+  } */
+
+  .register-modal {
+    --bs-modal-width: 100%;
+  }
+}
