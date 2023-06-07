@@ -43,6 +43,20 @@ body {
   display: none;
 }
 
+.scrollbar {
+  overflow-y: scroll;
+}
+
+.scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 .right-content {
   flex-grow: 8;
   position: relative;
@@ -82,17 +96,20 @@ body {
 }
 
 .arrow1,
-.arrow2 {
+.arrow2,
+.arrow3 {
   transition: transform 0.2s;
 }
 
 .arrow1.rotate1,
-.arrow2.rotate2 {
+.arrow2.rotate2,
+.arrow3.rotate3 {
   transform: rotate(-90deg);
 }
 
 .p-submenu,
-.u-submenu {
+.u-submenu,
+.d-submenu {
   display: none;
 }
 

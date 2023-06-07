@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Users\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\BarangayOfficial;
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -47,35 +49,77 @@ class AdminController extends Controller
         return view('users.admin.establishments');
     }
     
-    public function users()
+    public function staffs()
     {
-        return view('users.admin.users');
+        return view('users.admin.staffs');
+    }
+
+    public function residentBusiness()
+    {
+        return view('users.admin.residentBusiness');
     }
     
     public function approval()
     {
-        return view('users.admin.userApproval');
+        $residents = User::where('role', 5)->paginate(5);
+        $businesses = User::where('role', 6)->get();
+
+        return view('users.admin.userApproval', [
+            'residents' => $residents,
+            'businesses' => $businesses,
+        ]);
     }
+
+    public function clearance()
+    {
+        return view('users.admin.clearance');
+    }
+
+    public function businessPermit()
+    {
+        return view('users.admin.businessPermit');
+    }
+
+    public function indigency()
+    {
+        return view('users.admin.indigency');
+    }
+
+    public function reports()
+    {
+        return view('users.admin.reports');
+    }
+
     public function message()
     {
         return view('users.admin.message');
     }
-    
-    public function accounts()
+
+    public function programs()
     {
-        return view('users.admin.accounts');
+        return view('users.admin.programs');
     }
 
-    public function archive()
+    public function audits()
     {
-        return view('users.admin.archive');
+        return view('users.admin.audits');
+    }
+
+    public function spot()
+    {
+        return view('users.admin.spot');
+    }
+    
+    public function account()
+    {
+        return view('users.admin.account');
     }
 
     public function addOfficials(Request $request)
     {
         $validated = Validator::make($request->all(),
         [
-            'profile_img' => ['nullable'],
+            'display_picture' => ['nullable', File::image()],
             'last_name' => ['required', 'string', 'max:255'],
             'first_name' => ['required', 'string', 'max:255'],
             'middle_name' => ['required', 'string', 'max:255'],
@@ -84,7 +128,7 @@ class AdminController extends Controller
             'gender' => ['required', 'string', 'max:255'],
             'contact' => ['required', 'string', 'max:13'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'c_status' => ['required', 'string', 'max:255'],
+            'civil_status' => ['required', 'string', 'max:255'],
             'birthday' => ['required', 'date', 'max:255'],
             'position' => ['required', 'string', 'max:255'],
         ]);
@@ -95,24 +139,41 @@ class AdminController extends Controller
                 'messages' => $validated->getMessageBag()
             ]);
         }else{
-            $profile_img_name = $request->file('profile_img')->getClientOriginalName();
-            $profile_img = time() . '-' . $profile_img_name;
-            $request->file('profile_img')->storeAs('public/images/brgyOfficials', $profile_img);
-
-            $official = new BarangayOfficial();
-            $official->profile_img = $profile_img;
-            $official->lname = $request->last_name;
-            $official->fname = $request->first_name;
-            $official->mname = $request->middle_name;
-            $official->sname = $request->suffix_name;
-            $official->zone = $request->zone;
-            $official->gender = $request->gender;
-            $official->contact = $request->contact;
-            $official->email = $request->email;
-            $official->c_status = $request->c_status;
-            $official->bday = $request->birthday;
-            $official->position = $request->position;
-            $official->save();
+            if($request->hasFile('display_picture')){
+                $display_picture_name = $request->file('display_picture')->getClientOriginalName();
+                $display_picture = time() . '-' . $display_picture_name;
+                // $request->file('display_picture')->storeAs('public/images/brgyOfficials', $display_picture);
+                $request->file('display_picture')->move('images/brgyOfficials/profiles', $display_picture);
+    
+                $official = new BarangayOfficial();
+                $official->profile_img = $display_picture;
+                $official->lname = $request->last_name;
+                $official->fname = $request->first_name;
+                $official->mname = $request->middle_name;
+                $official->sname = $request->suffix_name;
+                $official->zone = $request->zone;
+                $official->gender = $request->gender;
+                $official->contact = $request->contact;
+                $official->email = $request->email;
+                $official->c_status = $request->civil_status;
+                $official->bday = $request->birthday;
+                $official->position = $request->position;
+                $official->save();
+            }else{
+                $official = new BarangayOfficial();
+                $official->lname = $request->last_name;
+                $official->fname = $request->first_name;
+                $official->mname = $request->middle_name;
+                $official->sname = $request->suffix_name;
+                $official->zone = $request->zone;
+                $official->gender = $request->gender;
+                $official->contact = $request->contact;
+                $official->email = $request->email;
+                $official->c_status = $request->civil_status;
+                $official->bday = $request->birthday;
+                $official->position = $request->position;
+                $official->save();
+            }
 
             return response()->json([
                 'status' => 200,
@@ -130,7 +191,7 @@ class AdminController extends Controller
     {
         $validated = Validator::make($request->all(),
         [
-            'profile_img' => ['nullable'],
+            'display_picture' => ['nullable', File::image()],
             'last_name' => ['required', 'string', 'max:255'],
             'first_name' => ['required', 'string', 'max:255'],
             'middle_name' => ['required', 'string', 'max:255'],
@@ -139,7 +200,7 @@ class AdminController extends Controller
             'gender' => ['required', 'string', 'max:255'],
             'contact' => ['required', 'string', 'max:13'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'c_status' => ['required', 'string', 'max:255'],
+            'civil_status' => ['required', 'string', 'max:255'],
             'birthday' => ['required', 'date', 'max:255'],
             'position' => ['required', 'string', 'max:255'],
         ]);
@@ -150,13 +211,14 @@ class AdminController extends Controller
                 'messages' => $validated->getMessageBag()
             ]);
         }else{
-            if($request->hasFile('profile_img')){
-                $profile_img_name = $request->file('profile_img')->getClientOriginalName();
-                $profile_img = time() . '-' . $profile_img_name;
-                $request->file('profile_img')->storeAs('public/images/brgyOfficials', $profile_img);
+            if($request->hasFile('display_picture')){
+                $display_picture_name = $request->file('display_picture')->getClientOriginalName();
+                $display_picture = time() . '-' . $display_picture_name;
+                // $request->file('display_picture')->storeAs('public/images/brgyOfficials', $display_picture);
+                $request->file('display_picture')->move('images/brgyOfficials/profiles', $display_picture);
 
-                $official = BarangayOfficial::find($request->id);
-                $official->profile_img = $profile_img;
+                $official = BarangayOfficial::find($request->official_id);
+                $official->profile_img = $display_picture;
                 $official->lname = $request->last_name;
                 $official->fname = $request->first_name;
                 $official->mname = $request->middle_name;
@@ -165,12 +227,12 @@ class AdminController extends Controller
                 $official->gender = $request->gender;
                 $official->contact = $request->contact;
                 $official->email = $request->email;
-                $official->c_status = $request->c_status;
+                $official->c_status = $request->civil_status;
                 $official->bday = $request->birthday;
                 $official->position = $request->position;
                 $official->update();
             }else{
-                $official = BarangayOfficial::find($request->id);
+                $official = BarangayOfficial::find($request->official_id);
                 $official->lname = $request->last_name;
                 $official->fname = $request->first_name;
                 $official->mname = $request->middle_name;
@@ -179,7 +241,7 @@ class AdminController extends Controller
                 $official->gender = $request->gender;
                 $official->contact = $request->contact;
                 $official->email = $request->email;
-                $official->c_status = $request->c_status;
+                $official->c_status = $request->civil_status;
                 $official->bday = $request->birthday;
                 $official->position = $request->position;
                 $official->update();
@@ -188,7 +250,7 @@ class AdminController extends Controller
 
             return response()->json([
                 'status' => 200,
-                'messages' => 'Udated successfully!'
+                'messages' => 'Updated successfully!'
             ]);
         }
     }

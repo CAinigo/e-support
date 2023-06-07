@@ -3,11 +3,34 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
+use App\Models\Name;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function login(Request $request) 
+    public function sample(Request $request)
+    {
+        $nameModel = new Name();
+        $nameModel->name = $request->name;
+        $nameModel->save();
+
+        for($i = 0; $i < count($request->address); $i++){
+            $addressModel = new Address();
+            $addressModel->address = $request->address[$i];
+            $addressModel->name_id = $nameModel->id;
+            $addressModel->save();
+        }
+
+        return back();
+    }
+
+    public function login()
+    {
+        return view('auth.login');
+    }
+
+    public function loginValidate(Request $request) 
     {
         $input = $request->all();
 
@@ -34,7 +57,7 @@ class LoginController extends Controller
                 return redirect()->route('welcome')->with('error', 'Something went wrong, Please try again.');
             }
         }else{
-            return redirect()->route('welcome')
+            return redirect()->route('login')
                 ->with('error','Username or Password is incorrect.');
         }
     }

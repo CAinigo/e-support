@@ -1,0 +1,1 @@
+<h1>This is business permit page</h1>

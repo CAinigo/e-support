@@ -52,12 +52,37 @@ html {
   border: none;
 }
 
-.register-modal {
+/* .register-modal {
   --bs-modal-width: 75%;
+} */
+
+/* .register-content {
+  background-color: #E7EEFB;
+} */
+
+.cursor {
+  cursor: pointer;
 }
 
-.register-content {
-  background-color: #E7EEFB;
+.active {
+  background-color: black;
+  color: white;
+}
+
+.anchor {
+  display: block;
+  height: 115px; /*same height as header*/
+  margin-top: -115px; /*same height as header*/
+  visibility: hidden;
+}
+
+.display-img-label {
+  font-size: 0.8rem;
+}
+
+.display-img {
+  font-size: 0.6rem;
+  padding: 0 0.2rem;
 }
 
 @media (max-width: 991px) {

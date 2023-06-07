@@ -1,0 +1,1 @@
+<h1>This is indigency page</h1>

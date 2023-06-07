@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('barangay_officials', function (Blueprint $table) {
             $table->id();
-            $table->string('profile_img');
+            $table->string('profile_img')->nullable();
             $table->string('lname');
             $table->string('fname');
             $table->string('mname');

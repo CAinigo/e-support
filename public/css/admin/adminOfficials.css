@@ -1,10 +1,10 @@
-.register-modal {
+/* .register-modal {
   --bs-modal-width: 75%;
-}
+} */
 
-.register-content {
+/* .register-content {
   background-color: #E7EEFB;
-}
+} */
 
 .btn-close:focus {
   box-shadow: none;
@@ -48,12 +48,39 @@
   color: #FF2020;
 }
 
+.display-img-label {
+  font-size: 0.8rem;
+}
+
+.display-img {
+  font-size: 0.6rem;
+  padding: 0 0.2rem;
+}
+
+.add-btn {
+  background-color: #432344;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-top: -0.5rem;
+  height: 2.5rem;
+  width: 6rem;
+}
+
+.show-entries{
+  width: 3.5rem;
+}
+
+.official-header-cont,
+.add-btn {
+  box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.3);
+}
+
 @media (max-width: 991px) {
   /* .ul-bg {
     background-color: #2d182e;
   } */
 
-  .register-modal {
+  /* .register-modal {
     --bs-modal-width: 100%;
-  }
+  } */
 }

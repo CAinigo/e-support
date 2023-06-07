@@ -1,0 +1,1 @@
+<h1>This is clearance page</h1>

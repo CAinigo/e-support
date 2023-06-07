@@ -28,7 +28,11 @@ $(document).ready(function(){
             container.removeClass('d-none');
             contLoader.removeClass('custom-loader');
             break;
-          case 'users': 
+          case 'staffs': 
+            container.removeClass('d-none');
+            contLoader.removeClass('custom-loader');
+            break;
+          case 'resident-business': 
             container.removeClass('d-none');
             contLoader.removeClass('custom-loader');
             break;
@@ -36,15 +40,39 @@ $(document).ready(function(){
             container.removeClass('d-none');
             contLoader.removeClass('custom-loader');
             break;
+          case 'clearance': 
+            container.removeClass('d-none');
+            contLoader.removeClass('custom-loader');
+            break;
+          case 'business-permit': 
+            container.removeClass('d-none');
+            contLoader.removeClass('custom-loader');
+            break;
+          case 'indigency': 
+            container.removeClass('d-none');
+            contLoader.removeClass('custom-loader');
+            break;
+          case 'reports': 
+            container.removeClass('d-none');
+            contLoader.removeClass('custom-loader');
+            break;
           case 'message': 
             container.removeClass('d-none');
             contLoader.removeClass('custom-loader');
             break;
-          case 'accounts': 
+          case 'programs': 
             container.removeClass('d-none');
             contLoader.removeClass('custom-loader');
             break;
-          case 'archive': 
+          case 'audits': 
+            container.removeClass('d-none');
+            contLoader.removeClass('custom-loader');
+            break;
+          case 'spot': 
+            container.removeClass('d-none');
+            contLoader.removeClass('custom-loader');
+            break;
+          case 'account': 
             container.removeClass('d-none');
             contLoader.removeClass('custom-loader');
             break;
@@ -66,15 +94,29 @@ $(document).ready(function(){
           break;
         case 'business-establishments': $('#establishments').addClass('navigate-active');
           break;
-        case 'users': $('#users').addClass('navigate-active');
+        case 'staffs': $('#staffs').addClass('navigate-active');
+          break;
+        case 'resident-business': $('#resident-business').addClass('navigate-active');
           break;
         case 'user-approval': $('#approval').addClass('navigate-active');
+            break;
+        case 'clearance': $('#clearance').addClass('navigate-active');
+          break;
+        case 'business-permit': $('#business-permit').addClass('navigate-active');
+          break;
+        case 'indigency': $('#indigency').addClass('navigate-active');
+          break;
+        case 'reports': $('#reports').addClass('navigate-active');
           break;
         case 'message': $('#message').addClass('navigate-active');
           break;
-        case 'accounts': $('#accounts').addClass('navigate-active');
+        case 'programs': $('#programs').addClass('navigate-active');
           break;
-        case 'archive': $('#archive').addClass('navigate-active');
+        case 'audits': $('#audits').addClass('navigate-active');
+          break;
+        case 'spot': $('#spot').addClass('navigate-active');
+          break;
+        case 'account': $('#account').addClass('navigate-active');
           break;
         default :
           console.log('404');

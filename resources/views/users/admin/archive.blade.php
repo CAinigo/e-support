@@ -1,1 +1,0 @@
-<h1>This is archive page</h1>

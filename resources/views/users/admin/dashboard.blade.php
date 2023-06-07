@@ -35,7 +35,6 @@
     </div>
   </div>
   <div class="row">
-    @extends('users.admin.barangayOfficials')
     {{-- <div class="container-fluid bg-white rounded p-4">
       <div class="d-flex align-items-center pt-3 pb-5">
         <span class="material-symbols-outlined add-icon fs-2 me-3">groups</span>

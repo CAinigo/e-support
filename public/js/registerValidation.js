@@ -17,13 +17,14 @@ $(function(){
           showError('reg-fname', res.messages.first_name);
           showError('reg-mname', res.messages.middle_name);
           showError('reg-sname', res.messages.suffix_name);
+          showError('display-pict', res.messages.display_picture);
           showError('reg-bday', res.messages.birthday);
-          showError('reg-gender', res.messages.gender);
+          showError('reg-email', res.messages.email);
+          showError('reg-contact', res.messages.contact);
           showError('reg-zone', res.messages.zone);
           showError('reg-e-status', res.messages.e_status);
-          showError('reg-c-status', res.messages.c_status);
-          showError('reg-contact', res.messages.contact);
-          showError('reg-email', res.messages.email);
+          showError('reg-gender', res.messages.gender);
+          showError('family-head', res.messages.family_head);
           showError('reg-username', res.messages.username);
           showError('reg-password', res.messages.password);
           $('#reg-btn').val('Register');
@@ -70,26 +71,33 @@ $(function(){
     e.preventDefault();
 
     const comModal = bootstrap.Modal.getOrCreateInstance('#companyModal');
-    $('#com-btn').val('Please Wait...');
-    $('#com-btn').attr('disabled', 'disabled');
     $.ajax({
       url:  $(this).attr('action'),
       method: 'post',
-      data: $(this).serialize(),
+      data: new FormData(this),
       dataType: 'json',
+      contentType: false,
+      cache: false,
+      processData: false,
+      beforeSend: function(){
+        $('#com-btn').val('Please Wait...');
+        $('#com-btn').attr('disabled', 'disabled');
+      },
       success: function(res){
         if(res.status == 400){
+          showErrorCom('business-name', res.messages.business_name);
+          showErrorCom('business-address', res.messages.business_address);
+          showErrorCom('business-nature', res.messages.business_nature);
           showErrorCom('com-lname', res.messages.last_name);
           showErrorCom('com-fname', res.messages.first_name);
           showErrorCom('com-mname', res.messages.middle_name);
           showErrorCom('com-sname', res.messages.suffix_name);
-          showErrorCom('b_name', res.messages.business_name);
-          showErrorCom('type_of_b', res.messages.type_of_business);
-          showErrorCom('com-zone', res.messages.zone);
-          showErrorCom('com-contact', res.messages.contact);
+          showErrorCom('com-display-pict', res.messages.display_picture);
           showErrorCom('com-email', res.messages.email);
+          showErrorCom('com-contact', res.messages.contact);
           showErrorCom('com-username', res.messages.username);
           showErrorCom('com-password', res.messages.password);
+          showErrorCom('com-clearance', res.messages.business_clearance);
           $('#com-btn').val('Register');
           $('#com-btn').removeAttr('disabled');
         }else if(res.status == 200){

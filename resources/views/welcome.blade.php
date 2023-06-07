@@ -17,89 +17,31 @@
 
 </head>
 <body class="welcome-bg">
-  <nav class="navbar navbar-light navbar-expand-lg nav-bg">
+  <nav class="navbar sticky-top navbar-light navbar-expand-lg nav-bg">
       <a class="navbar-brand fs-3 fw-bold text-white ms-3" href="#">e-Support</a>
       <button class="navbar-toggler me-2 border-0 custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse ul-bg" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
-          @guest
-            @if (Route::has('login'))
-              <li class="nav-item">
-                <a class="nav-link text-white mx-3" href="#">Barangay Officials</a>
-              </li>
-              <li class="nav-item">
-                <!-- Button trigger modal -->
-                <button id="sign-up" type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#locationModal">
-                  Location
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="locationModalLabel">Location</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3836.141076750114!2d120.57392377412579!3d15.954007442514202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33913efd2b8ba2b1%3A0xac2ed57018278646!2sNancayasan%20Barangay%20Hall!5e0!3m2!1sen!2sph!4v1683989815917!5m2!1sen!2sph" width="465" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                      </div>
-                      {{-- <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                      </div> --}}
-                    </div>
-                  </div>
-                </div>
-              </li>
-            @endif
-            @else
-              <li class="nav-item">
-                <a class="nav-link text-white mx-3" href="#">Barangay Officials</a>
-              </li>
-              <li class="nav-item">
-                <!-- Button trigger modal -->
-                <button id="sign-up" type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#locationModal">
-                  Location
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="locationModalLabel">Location</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3836.141076750114!2d120.57392377412579!3d15.954007442514202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33913efd2b8ba2b1%3A0xac2ed57018278646!2sNancayasan%20Barangay%20Hall!5e0!3m2!1sen!2sph!4v1683989815917!5m2!1sen!2sph" width="465" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                      </div>
-                      {{-- <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                      </div> --}}
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="nav-item">
-                @if (auth()->user()->role == 0)
-                  <a class="nav-link text-white mx-3" href="{{ route('admin') }}">Dashboard</a>
-                @elseif (auth()->user()->role == 1)
-                  <a class="nav-link text-white mx-3" href="{{ route('sub-admin') }}">Dashboard</a>
-                @elseif (auth()->user()->role == 2)
-                  <a class="nav-link text-white mx-3" href="{{ route('bhw') }}">Dashboard</a>
-                @elseif (auth()->user()->role == 3)
-                  <a class="nav-link text-white mx-3" href="{{ route('resident') }}">Dashboard</a>
-                @elseif (auth()->user()->role == 4)
-                  <a class="nav-link text-white mx-3" href="{{ route('company') }}">Dashboard</a>
-                @else
-                  <a class="nav-link text-white mx-3" href="{{ route('for-approval') }}">Dashboard</a>
-                @endif
-              </li>
-          @endguest
+          <li class="nav-item">
+            <a class="nav-link text-white mx-3" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white mx-3" href="#brgy-officials">Barangay Officials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white mx-3" href="#programs">Programs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white mx-3" href="#">Location</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white mx-3" href="#spots">Tourism</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white mx-3" href="{{ route('login') }}">Login</a>
+          </li>
         </ul>
       </div>
   </nav>
@@ -113,8 +55,6 @@
       </div>
     @endif
 
-      <div id="registered-complete" class="position-absolute top-25 start-50 translate-middle z-1"></div>
-
     @if ($message = Session::get('registered'))
       <div id="logout-flash" class="alert alert-success alert-dismissible fade show position-absolute top-25 start-50 translate-middle z-1" role="alert">
         <strong>{{ $message }}</strong>
@@ -122,89 +62,284 @@
       </div>
     @endif
 
-    <div class="container-fluid my-5">
-      @guest
-        @if (Route::has('login'))
-          <div class="row">
-            <div class="col mb-5 d-flex flex-column gap-5 justify-content-center align-items-center">
-              <h1 class="display-1 fw-bold text-center text-white">Barangay Nancayasan</h1>
-              <a href="#read-more" class="btn btn-warning">Read More</a>
-            </div>
-            <div class="col mb-5">
-              <div class="card bg-white bg-opacity-50 py-4 mx-auto login-card">
-                <div class="card-body d-flex flex-column align-items-center">
-                  <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="logo" style="height: 6rem">
-                  <h4>e-Support</h4>
-                  <form action="{{ route('login') }}" method="POST" class="mt-3">
-                    @csrf
-  
-                    @if ($message = Session::get('error'))
-                      <div class="alert alert-danger alert-dismissible fade show d-flex justify-content-center" role="alert">
-                        <p class="mb-0">{{ $message }}</p>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
-                    @endif
-                    @if ($message = Session::get('for-approval'))
-                      <div class="alert alert-warning alert-dismissible fade show d-flex justify-content-center" role="alert">
-                        <p class="mb-0">{{ $message }}</p>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
-                    @endif
-  
-                    <div class="row mb-3">
-                      <label for="username" class="">Emali or Username</label>
-                      <div class="col-md-12">
-                        <input type="text" id="username" class="form-control @error('Username') is-invalid @enderror" name="Username" value="{{ old('Username') }}" autocomplete="username" autofocus>
-  
-                        @error('Username')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                      </div>
-                    </div>
-                    <div class="row mb-4">
-                      <label for="password" class="">Password</label>
-                      <div class="col-md-12">
-                        <input type="password" id="password" class="form-control @error('Password') is-invalid @enderror" name="Password" autocomplete="current-password">
-  
-                        @error('Password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="d-flex flex-column align-items-center">
-                        <button type="submit" class="btn btn-warning rounded-pill w-50 mb-3">Login</button>
-                      </div>
-                    </div>
-                  </form>
-                  <a href="#" class="text-decoration-none text-color my-3">Forgot Password?</a>
-                  <div class="d-flex justify-content-between w-75 mt-3">
-                    <p class="text-color" data-bs-toggle="modal" data-bs-target="#registerModal">
-                      Sign up as resident
-                    </p>
-                    {{-- <a href="{{ route('toRegister') }}" class="text-decoration-none text-color">Create an Account</a> --}}
-                    <!-- Button trigger modal -->
-                    <p class="text-color" data-bs-toggle="modal" data-bs-target="#companyModal">
-                      Sign up as company
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          @endif
-          @else
-            <div class="row">
-              <div class="col mb-5 d-flex flex-column gap-5 justify-content-center align-items-center">
-                <h1 class="display-1 fw-bold text-center text-white">Barangay Nancayasan</h1>
-                <a href="#read-more" class="btn btn-warning">Read More</a>
-              </div>
-            </div>
-        @endguest
+<!-- Button trigger modal -->
+{{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> --}}
+
+<!-- Modal -->
+{{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header row">
+          <div class="col-3 d-flex justify-content-center cursor active" id="tab1">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Tab 1</h1>
+          </div>
+          <div class="col-3 d-flex justify-content-center cursor" id="tab2">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Tab 2</h1>
+          </div>
+          <div class="col-3 d-flex justify-content-center cursor" id="tab3">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Tab 3</h1>
+          </div>
+          <div class="col-3 d-flex justify-content-center">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
       </div>
+      <form action="{{ route('sample') }}" method="POST">
+        @csrf
+        <div class="modal-body" id="tab1-modal">
+          <div class="col">
+            <div class="row">
+              <label for="">Name</label>
+              <input type="text" name="name" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Name</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="modal-body d-none" id="tab2-modal">
+          <div class="col">
+            <div class="row">
+              <label for="">address</label>
+              <input type="text" name="address[]" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">address</label>
+              <input type="text" name="address[]" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">address</label>
+              <input type="text" name="address[]" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Age</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Age</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Age</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Age</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Age</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Age</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Age</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="modal-body d-none" id="tab3-modal">
+          <div class="col">
+            <div class="row">
+              <label for="">Address</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Address</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Address</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Address</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Address</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Address</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Address</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row">
+              <label for="">Address</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> --}}
+
+    <div class="row my-5 pt-5">
+      <div class="container w-50 mx-auto">
+        @foreach ($brgyCaptains as $brgyCaptain)
+        <div class="row my-2">
+          <div class="col-6 d-flex flex-column align-items-center">
+            <h1 class="fw-bold text-white">Barangay Nancayasan</h1>
+            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro culpa sunt, suscipit in aliquid sed.</p>
+          </div>
+          <div class="col-6 d-flex justify-content-center">
+            @if ($brgyCaptain->profile_img == null)
+              <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="brgy-cpt" style="height: 15rem;">
+            @else
+              <img src="{{ asset('images/brgyOfficials/profiles/' . $brgyCaptain->profile_img) }}" alt="brgy-cpt" style="height: 15rem;">
+            @endif
+          </div>
+        </div>
+        <div class="row container bg-white rounded my-2">
+          <h1 class="fw-bold text-dark text-center">{{ $brgyCaptain->fname }} {{ $brgyCaptain->mname }} {{ $brgyCaptain->lname }} {{ $brgyCaptain->sname }}</h1>
+          <hr class="py-0 my-0">
+          <p class="text-dark text-center py-0 my-0">
+            @if ($brgyCaptain->position == '1')
+              Barangay Captain
+            @endif
+          </p>
+        </div>
+        @endforeach
+      </div>
+    </div>
+
+    {{-- Programs --}}
+    <span id="programs" class="anchor"></span>
+    <div class="row p-5">
+      <div class="col-4">
+        <div class="card">
+          <img class="mx-auto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="" style="height: 10rem; width: 10rem;">
+          <div class="card-body">
+            <div class="card-text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, pariatur.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <img class="mx-auto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="" style="height: 10rem; width: 10rem;">
+          <div class="card-body">
+            <div class="card-text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, pariatur.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <img class="mx-auto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="" style="height: 10rem; width: 10rem;">
+          <div class="card-body">
+            <div class="card-text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, pariatur.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="d-flex justify-content-center">
+          <a href="#" class="btn btn-dark bg-transparent text-dark">See more programs</a>
+        </div>
+      </div>
+    </div>
+
+    {{-- Spots --}}
+    <span id="spots" class="anchor"></span>
+    <div class="row p-5">
+      <div class="col-4">
+        <div class="card">
+          <img class="mx-auto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="" style="height: 10rem; width: 10rem;">
+          <div class="card-body">
+            <div class="card-text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, pariatur.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <img class="mx-auto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="" style="height: 10rem; width: 10rem;">
+          <div class="card-body">
+            <div class="card-text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, pariatur.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <img class="mx-auto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="" style="height: 10rem; width: 10rem;">
+          <div class="card-body">
+            <div class="card-text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, pariatur.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="d-flex justify-content-center">
+          <a href="#" class="btn btn-dark bg-transparent text-dark">See more spots</a>
+        </div>
+      </div>
+    </div>
+
+    {{-- Brgy Officials --}}
+    <span id="brgy-officials" class="anchor"></span>
+    <div class="row p-5">
+      @foreach ($officials as $official)
+        <div class="col-4">
+          <div class="card">
+            @if ($official->profile_img == null)
+              <img class="mx-auto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="" style="height: 10rem; width: 10rem;">
+            @else
+              <img class="mx-auto" src="{{ asset('images/brgyOfficials/profiles/' . $brgyCaptain->profile_img) }}" alt="" style="height: 10rem; width: 10rem;">
+            @endif
+            <div class="card-body">
+              <div class="card-text">
+                <p class="fw-bold text-dark text-center">{{ $official->fname }} {{ $official->mname }} {{ $official->lname }} {{ $official->sname }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      @endforeach
     </div>
     <div class="container-fluid my-5" id="read-more">
       <div class="row">
@@ -258,287 +393,86 @@
       </div>
     </div>
 
-    <!-- Resident Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-      <div class="modal-dialog register-modal">
-        <div class="modal-content register-content">
-          <div class="modal-header py-2 bg-warning">
-            <h1 class="modal-title fs-5" id="registerModalLabel">Register</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    {{-- Contacts --}}
+    <span id="contacts" class="anchor"></span>
+    <div class="row p-5">
+      <div class="col-4">
+        <div class="card">
+          <img class="mx-auto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="" style="height: 10rem; width: 10rem;">
+          <div class="card-body">
+            <div class="card-text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, pariatur.
+            </div>
           </div>
-          <form id="register-form" action="{{ route('register') }}" method="POST">
-            <div class="modal-body">
-              @csrf
-              <div class="row mb-4">
-                <div class="col-3">
-                  <label for="reg-lname" class="">Last Name</label>
-                  <div class="col-md-12">
-                    <input type="text" id="reg-lname" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" autocomplete="lname" autofocus>
-
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <label for="reg-fname" class="">First Name</label>
-                  <div class="col-md-12">
-                    <input type="text" id="reg-fname" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" autocomplete="fname" autofocus>
-
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <label for="reg-mname" class="">Middle Name</label>
-                  <div class="col-md-12">
-                    <input type="text" id="reg-mname" class="form-control @error('middle_name') is-invalid @enderror" name="middle_name" value="{{ old('middle_name') }}" autocomplete="mname" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <label for="reg-sname" class="">Suffix (optional)</label>
-                  <div class="col-md-12">
-                    <input type="text" id="reg-sname" class="form-control @error('suffix_name') is-invalid @enderror" name="suffix_name" value="{{ old('suffix_name') }}" autocomplete="sname" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col-3">
-                  <label for="reg-bday" class="">Birthday</label>
-                  <div class="col-md-12">
-                    <input type="date" id="reg-bday" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" autocomplete="bday" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <label for="reg-gender" class="">Gender</label>
-                  <div class="col-md-12">
-                    <select id="reg-gender" class="form-select @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" autocomplete="gender" autofocus>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                    </select>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-2">
-                  <label for="reg-zone" class="">Zone</label>
-                  <div class="col-md-12">
-                    <select id="reg-zone" class="form-select @error('zone') is-invalid @enderror" name="zone" value="{{ old('zone') }}" autocomplete="zone" autofocus>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <label for="reg-e-status" class="">Employment Status</label>
-                  <div class="col-md-12">
-                    <select id="reg-e-status" class="form-select @error('e_status') is-invalid @enderror" name="e_status" value="{{ old('e_status') }}" autocomplete="e_status" autofocus>
-                      <option value="employed">Employed</option>
-                      <option value="unemployed">Unemployed</option>
-                    </select>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col-4">
-                  <label for="reg-c-status" class="">Civil Status</label>
-                  <div class="col-md-12">
-                    <select id="reg-c-status" class="form-select @error('c_status') is-invalid @enderror" name="c_status" value="{{ old('c_status') }}" autocomplete="c_status" autofocus>
-                      <option value="single">Single</option>
-                      <option value="married">Married</option>
-                      <option value="divorced">Divorced</option>
-                      <option value="separated">Separated</option>
-                      <option value="widowed">Widowed</option>
-                    </select>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <label for="reg-contact" class="">Contact No.</label>
-                  <div class="col-md-12">
-                    <input type="tel" id="reg-contact" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" autocomplete="contact" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <label for="reg-email" class="">Email</label>
-                  <div class="col-md-12">
-                    <input type="email" id="reg-email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col-4">
-                  <label for="reg-username" class="">Username</label>
-                  <div class="col-md-12">
-                    <input type="text" id="reg-username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <label for="reg-password" class="">Password</label>
-                  <div class="col-md-12">
-                    <input type="password" id="reg-password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <label for="reg-password-confirm" class="">Confirm Password</label>
-                  <div class="col-md-12">
-                    <input id="reg-password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <input id="reg-btn" value="Register" type="submit" class="btn btn-warning">
-            </div>
-          </form>
         </div>
       </div>
-    </div>
-
-    <!-- Company Modal -->
-    <div class="modal fade" id="companyModal" tabindex="-1" aria-labelledby="companyModalLabel" aria-hidden="true">
-      <div class="modal-dialog register-modal">
-        <div class="modal-content register-content">
-          <div class="modal-header py-2 bg-warning">
-            <h1 class="modal-title fs-5" id="companyModalLabel">Company Register</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="col-4">
+        <div class="card">
+          <img class="mx-auto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="" style="height: 10rem; width: 10rem;">
+          <div class="card-body">
+            <div class="card-text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, pariatur.
+            </div>
           </div>
-          <form id="company-form" action="{{ route('register.company') }}" method="POST">
-            <div class="modal-body">
-              @csrf
-              <div class="row mb-4">
-                <div class="col-3">
-                  <label for="com-lname" class="">Last Name</label>
-                  <div class="col-md-12">
-                    <input type="text" id="com-lname" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" autocomplete="lname" autofocus>
-
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <label for="com-fname" class="">First Name</label>
-                  <div class="col-md-12">
-                    <input type="text" id="com-fname" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" autocomplete="fname" autofocus>
-
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <label for="com-mname" class="">Middle Name</label>
-                  <div class="col-md-12">
-                    <input type="text" id="com-mname" class="form-control @error('middle_name') is-invalid @enderror" name="middle_name" value="{{ old('middle_name') }}" autocomplete="mname" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <label for="com-sname" class="">Suffix (optional)</label>
-                  <div class="col-md-12">
-                    <input type="text" id="com-sname" class="form-control @error('suffix_name') is-invalid @enderror" name="suffix_name" value="{{ old('suffix_name') }}" autocomplete="sname" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col-3">
-                  <label for="b_name" class="">Business Name</label>
-                  <div class="col-md-12">
-                    <input type="text" id="b_name" class="form-control @error('business_name') is-invalid @enderror" name="business_name" value="{{ old('business_name') }}" autocomplete="b_name" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <label for="type_of_b" class="">Type of Business</label>
-                  <div class="col-md-12">
-                    <input type="text" id="type_of_b" class="form-control @error('type_of_business') is-invalid @enderror" name="type_of_business" value="{{ old('type_of_business') }}" autocomplete="type_of_b" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-2">
-                  <label for="com-zone" class="">Zone</label>
-                  <div class="col-md-12">
-                    <select id="com-zone" class="form-select @error('zone') is-invalid @enderror" name="zone" value="{{ old('zone') }}" autocomplete="zone" autofocus>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <label for="com-contact" class="">Contact No.</label>
-                  <div class="col-md-12">
-                    <input type="tel" id="com-contact" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" autocomplete="contact" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col-3">
-                  <label for="com-email" class="">Email</label>
-                  <div class="col-md-12">
-                    <input type="email" id="com-email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <label for="com-username" class="">Username</label>
-                  <div class="col-md-12">
-                    <input type="text" id="com-username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <label for="com-password" class="">Password</label>
-                  <div class="col-md-12">
-                    <input type="password" id="com-password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
-      
-                        <span class="invalid-feedback" role="alert"></span>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <label for="com-password-confirm" class="">Confirm Password</label>
-                  <div class="col-md-12">
-                    <input id="com-password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
-                  </div>
-                </div>
-              </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <img class="mx-auto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1" alt="" style="height: 10rem; width: 10rem;">
+          <div class="card-body">
+            <div class="card-text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, pariatur.
             </div>
-            <div class="modal-footer">
-              <input id="com-btn" value="Register" type="submit" class="btn btn-warning">
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
   </main>
+
+  {{-- <script>
+
+    const tab1 = document.getElementById('tab1');
+    const tab2 = document.getElementById('tab2');
+    const tab3 = document.getElementById('tab3');
+    const tab1Modal = document.getElementById('tab1-modal');
+    const tab2Modal = document.getElementById('tab2-modal');
+    const tab3Modal = document.getElementById('tab3-modal');
+
+    tab1.addEventListener('click', function(){
+      tab3.classList.remove('active');
+      tab2.classList.remove('active');
+      tab1.classList.add('active');
+      tab1Modal.classList.remove("d-none");
+      tab1Modal.classList.add("d-block");
+      tab2Modal.classList.remove("d-block");
+      tab2Modal.classList.add("d-none");
+      tab3Modal.classList.remove("d-block");
+      tab3Modal.classList.add("d-none");
+    });
+
+    tab2.addEventListener('click', function(){
+      tab3.classList.remove('active');
+      tab1.classList.remove('active');
+      tab2.classList.add('active');
+      tab2Modal.classList.remove("d-none");
+      tab2Modal.classList.add("d-block");
+      tab1Modal.classList.remove("d-block");
+      tab1Modal.classList.add("d-none");
+      tab3Modal.classList.remove("d-block");
+      tab3Modal.classList.add("d-none");
+    });
+
+    tab3.addEventListener('click', function(){
+      tab1.classList.remove('active');
+      tab2.classList.remove('active');
+      tab3.classList.add('active');
+      tab3Modal.classList.remove("d-none");
+      tab3Modal.classList.add("d-block");
+      tab2Modal.classList.remove("d-block");
+      tab2Modal.classList.add("d-none");
+      tab1Modal.classList.remove("d-block");
+      tab1Modal.classList.add("d-none");
+    });
+  </script> --}}
 </body>
 </html>

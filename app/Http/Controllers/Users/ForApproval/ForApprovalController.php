@@ -12,6 +12,6 @@ class ForApprovalController extends Controller
     {
         auth()->logout();
 
-        return redirect()->route('welcome')->with('for-approval', 'Your account has not been approved yet.');
+        return redirect()->route('login')->with('for-approval', 'Your account has not been approved yet.');
     }
 }

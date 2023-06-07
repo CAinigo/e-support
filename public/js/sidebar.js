@@ -42,6 +42,16 @@ uSubmenuTgl.addEventListener('click', () => {
   uArrow.classList.toggle('rotate2');
 });
 
+// documents management submenu
+const dSubmenuTgl = document.getElementById('d-submenu-toggle');
+const dSubmenu = document.getElementById('d-sub-menu');
+const dArrow = document.getElementById('d-submenu-arrow');
+
+dSubmenuTgl.addEventListener('click', () => {
+  dSubmenu.classList.toggle('d-submenu');
+  dArrow.classList.toggle('rotate3');
+});
+
 // sidebar active navigation/indicator
 // const navigationLists = document.getElementsByClassName('nav-list');
 
