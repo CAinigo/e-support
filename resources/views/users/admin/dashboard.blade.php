@@ -1,35 +1,24 @@
 <div class="container-fluid px-5 pb-5">
   <div class="row mt-5 mb-2">
-    <div class="col-4">
+    <div class="col-6">
       <div class="card pt-3 card-container">
         <div class="rounded-circle card-icon-container">
           <span class="material-symbols-outlined text-white">groups</span>
         </div>
         <div class="card-body">
-          <h2 class="card-text card-txt">15</h2>
-          <p class="card-title card-ttl">Barangay Officials</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card pt-3 card-container">
-        <div class="rounded-circle card-icon-container">
-          <span class="material-symbols-outlined text-white">groups</span>
-        </div>
-        <div class="card-body">
-          <h2 class="card-text card-txt">580</h2>
+          <h2 class="card-text card-txt">2</h2>
           <p class="card-title card-ttl">Residents</p>
         </div>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-6">
       <div class="card pt-3 card-container">
         <div class="rounded-circle card-icon-container">
           <span class="material-symbols-outlined text-white">groups</span>
         </div>
         <div class="card-body">
-          <h2 class="card-text card-txt">52</h2>
-          <p class="card-title card-ttl">Pre-registered Accounts</p>
+          <h2 class="card-text card-txt">2</h2>
+          <p class="card-title card-ttl">Family Head</p>
         </div>
       </div>
     </div>

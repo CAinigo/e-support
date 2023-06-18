@@ -1,4 +1,4 @@
-<div class="container-fluid py-5 px-4">
+{{-- <div class="container-fluid py-5 px-4">
   <div class="container-fluid bg-white rounded p-0">
     <div class="w-100 bg-warning rounded-top d-flex justify-content-between p-2 official-header-cont">
       <h2 class="text-dark">Family Heads</h2>
@@ -34,8 +34,8 @@
         </thead>
         <tbody>
 
-          {{-- <livewire:show-brgy-official/> --}}
-          {{-- @foreach ($officials as $official)
+          <livewire:show-brgy-official/>
+          @foreach ($officials as $official)
             <tr id="table-row">
               <td id="brgy-official-id" class="text-center">{{ $official->id }}</td>
               <td id="brgy-official-name" class="text-center">{{ $official->fname }} {{ $official->mname }} {{ $official->lname }} {{ $official->sname }}</td>
@@ -49,14 +49,14 @@
                 <i class="fa-solid fa-trash mx-1 delete-btn" data-bs-toggle="modal" data-id="{{ $official->id }}" data-bs-target="#deleteOfficialModal"></i>
               </td>
             </tr>
-          @endforeach --}}
+          @endforeach
         </tbody>
       </table>
     </div>
-  </div>
+  </div> --}}
 
   <!-- View Modal -->
-  <div class="modal fade" id="viewOfficialModal" tabindex="-1" aria-labelledby="viewOfficialModalLabel" aria-hidden="true">
+  {{-- <div class="modal fade" id="viewOfficialModal" tabindex="-1" aria-labelledby="viewOfficialModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable register-modal">
       <div class="modal-content register-content">
         <div class="modal-header py-2 bg-warning">
@@ -105,7 +105,7 @@
               </div>
           </div>
         </div>
-        {{-- <div class="modal-body">
+        <div class="modal-body">
           <div class="container w-75 px-0 bg-white border border-dark official-reg-cont">
             <div class="container pt-4 pb-5">
               <div class="row">
@@ -191,13 +191,13 @@
               </div>
             </div>
           </div>
-        </div> --}}
+        </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
   <!-- Edit Modal -->
-  <form id="edit-official-form" action="{{ route('edit-officials') }}" method="POST" enctype="multipart/form-data">
+  {{-- <form id="edit-official-form" action="{{ route('edit-officials') }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="modal fade" id="editOfficialModal" tabindex="-1" aria-labelledby="editOfficialModalLabel" aria-hidden="true">
@@ -342,10 +342,10 @@
         </div>
       </div>
     </div>
-  </form>
+  </form> --}}
 
   <!-- Delete Modal -->
-  <div class="modal fade" id="deleteOfficialModal" tabindex="-1" aria-labelledby="deleteOfficialModalLabel" aria-hidden="true">
+  {{-- <div class="modal fade" id="deleteOfficialModal" tabindex="-1" aria-labelledby="deleteOfficialModalLabel" aria-hidden="true">
     <div class="modal-dialog register-modal">
       <div class="modal-content w-50 mx-auto register-content">
         <div class="modal-header py-2">
@@ -371,10 +371,10 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> --}}
 
   <!-- Add Family Modal -->
-  <form id="add-official-form" action="{{ route('add-officials') }}" method="POST" enctype="multipart/form-data">
+  {{-- <form id="add-official-form" action="{{ route('add-officials') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="modal fade" id="brgyOfficialRegModal" tabindex="-1" aria-labelledby="brgyOfficialRegModalLabel" aria-hidden="true">
       <div class="modal-dialog register-modal">
@@ -743,7 +743,7 @@
               <div class="d-flex justify-content-end">
                 <button type="button" id="add-member-btn" class="btn btn-secondary">Add a member</button>
               </div>
-              {{-- <div id="add-member-container" class="col px-2 bg-danger border rounded border-dark">
+              <div id="add-member-container" class="col px-2 bg-danger border rounded border-dark">
                 <div class="col-12 mb-2 mx-auto">
                   <label for="add-family-member-lname" class="form-label mb-0">Last Name</label>
                   <div class="col-md-12">
@@ -816,7 +816,7 @@
                         <span class="invalid-feedback" role="alert"></span>
                   </div>
                 </div>
-              </div> --}}
+              </div>
             </div>
             <div id="additional" class="col-8 overflow-auto d-none residents-reg-cont">
               <div class="col px-2 bg-success border rounded border-dark">
@@ -1059,12 +1059,12 @@
         </div>
       </div>
     </div>
-  </form>
-</div>
-
+  </form> --}}
+{{-- </div> --}}
+<h1>This is the residents page</h1>
 {{-- <script defer src="{{ asset('js/profilingValidation.js') }}"></script> --}}
 
-<script>
+{{-- <script>
   $(document).ready(function(){
 
     const head = document.getElementById('head');
@@ -1177,7 +1177,7 @@
       $('#family-member').append(`
       <div class="col px-2 bg-white border rounded border-dark my-2 member-container-${memberCount}">
         <div class="d-flex justify-content-between px-1 py-2">
-          <p class="my-0 member-name">Member ${memberCount}</p>
+          <p class="my-0 member-name"></p>
           <span data-member="${memberCount}" style="cursor: pointer;" class="text-dark member-close-btn">&times;</span>
         </div>
         <div class="col-12 mb-2 mx-auto">
@@ -1712,4 +1712,4 @@
   //   });
   //   reader.readAsDataURL(this.files[0]);
   // }
-</script>
+</script> --}}

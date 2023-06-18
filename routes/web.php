@@ -115,7 +115,16 @@ Route::middleware('admin')->group(function(){
 
 // Sub-Admin Routes
 Route::middleware('sub-admin')->group(function(){
-    Route::get('/sub-admin/dashboard', [SubAdminController::class, 'dashboard'])->name('sub-admin');
+    Route::get('/sub-admin', [SubAdminController::class, 'subAdmin'])->name('sub-admin');
+    Route::get('/sub-admin/dashboard', [SubAdminController::class, 'dashboard'])->name('sub.dashboard');
+    Route::get('/sub-admin/residents', [SubAdminController::class, 'residents'])->name('sub.residents');
+    Route::get('/sub-admin/clearance', [SubAdminController::class, 'clearance'])->name('sub.clearance');
+    Route::get('/sub-admin/business-permit', [SubAdminController::class, 'businessPermit'])->name('sub.business-permit');
+    Route::get('/sub-admin/indigency', [SubAdminController::class, 'indigency'])->name('sub.indigency');
+    Route::get('/sub-admin/reports', [SubAdminController::class, 'reports'])->name('sub.reports');
+    Route::get('/sub-admin/programs', [SubAdminController::class, 'programs'])->name('sub.programs');
+    Route::get('/sub-admin/spot', [SubAdminController::class, 'spot'])->name('sub.spot');
+    Route::get('/sub-admin/account', [SubAdminController::class, 'account'])->name('sub.account');
 });
 
 

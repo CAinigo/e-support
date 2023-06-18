@@ -345,33 +345,30 @@
   </form>
 
   <!-- Delete Modal -->
-  <div class="modal fade" id="deleteOfficialModal" tabindex="-1" aria-labelledby="deleteOfficialModalLabel" aria-hidden="true">
-    <div class="modal-dialog register-modal">
-      <div class="modal-content w-50 mx-auto register-content">
-        <div class="modal-header py-2">
-          <h1 class="modal-title fs-5" id="deleteOfficialModalLabel">Delete Barangay Official</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form id="delete-official-form" action="{{ route('delete-officials') }}" method="POST">
-          @csrf
-          @method('DELETE')
-          <div class="modal-body">
-            <div class="container px-0 bg-white border border-dark official-reg-cont">
-              <div class="official-reg-header1"></div>
-              <div class="d-flex flex-column align-items-center">
-                <input type="hidden" id="delete-official-id" name="id">
-                <img id="delete-profile-img" class="py-3 default-img" alt="">
-                <div id="delete-info-cont" class="d-flex flex-column align-items-center"></div>
-              </div>
-              <div class="my-4 d-flex justify-content-center">
-                <input id="delete-officials-btn" value="Delete" type="submit" class="btn btn-warning rounded-pill px-5">
-              </div>
-            </div>
+  <form id="delete-official-form" action="{{ route('delete-officials') }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <div class="modal fade" id="deleteOfficialModal" tabindex="-1" aria-labelledby="deleteOfficialModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="deleteOfficialModalLabel">Delete Barangay Official</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-        </form>
+          <div class="modal-body">
+            <div class="d-flex flex-column align-items-center">
+              <input type="hidden" id="delete-official-id" name="id">
+            </div>
+            <p>Are you sure you want to delete <span id="delete-name"></span>?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <input id="delete-officials-btn" value="Yes" type="submit" class="btn btn-warning">
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 
   <!-- Add Brgy Official Modal -->
   <form id="add-official-form" action="{{ route('add-officials') }}" method="POST" enctype="multipart/form-data">
@@ -738,7 +735,7 @@
             // document.getElementById('profile-img').editEventListener('change', profileReader);
             // document.getElementById('profile-container').style.backgroundImage = "url('https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1')";
             removeValidationClasses('#delete-official-form');
-            $('#delete-officials-btn').val('Delete');
+            $('#delete-officials-btn').val('Yes');
             $('#delete-officials-btn').removeAttr('disabled');
             deleteOfficialModal.hide();
             fetchData();
@@ -907,7 +904,7 @@
       const id = $(this).attr('data-id');
 
       const deleteName = document.getElementById('delete-name');
-      const deletePosition = document.getElementById('delete-position');
+      const deleteId = document.getElementById('delete-official-id');
 
       $.ajax({
         url: '/admin/view-officials/' + id,
@@ -915,37 +912,13 @@
         data: {
           'id': id
         },
-        // beforeSend: function(){
-        //   document.getElementById('delete-profile-img').src = "https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1682225191~exp=1682225791~hmac=35847e176c9e88801c133b577ecf852825415d5b2b3c23f9d76d6c47a5a1e5b1";
-
-        //   $('#delete-info-cont').append(`
-        //     <h3>${loading}</h3>
-        //   `);
-        //   deleteLname.value = "loading...";
-        //   deleteFname.value = "loading...";
-        //   deleteMname.value = "loading...";
-        //   deleteSname.value = "loading...";
-        //   deletePosition.value = "loading...";
-        // },
+        beforeSend: function(){
+          deleteId.value = "";
+          deleteName.innerText = "";
+        },
         success: function(data){
-          $('#delete-info-cont').html('');
-          if(data.sname == null){
-            document.getElementById('delete-official-id').value = data.id;
-            document.getElementById('delete-profile-img').src = `{{ asset('storage/images/brgyOfficials/${data.profile_img}') }}`;
-
-            $('#delete-info-cont').append(`
-            <h3>${data.fname} ${data.mname} ${data.lname}</h3>
-            <h4>${data.position}</h4>
-            `);
-          }else{
-            document.getElementById('delete-official-id').value = data.id;
-            document.getElementById('delete-profile-img').src = `{{ asset('storage/images/brgyOfficials/${data.profile_img}') }}`;
-
-            $('#delete-info-cont').append(`
-            <h3>${data.fname} ${data.mname} ${data.lname} ${data.sname}</h3>
-            <h4>${data.position}</h4>
-            `);
-          }
+          deleteId.value = data.id;
+          deleteName.innerText = data.fname;
         }
       });
     }

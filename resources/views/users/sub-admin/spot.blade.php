@@ -1,0 +1,1 @@
+<h1>This is the spot page</h1>

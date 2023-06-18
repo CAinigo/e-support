@@ -1,17 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>e-Support</title>
-</head>
-<body>
-  <h1>Sub Admin</h1>
-
-  <form action="{{ route('logout') }}" method="POST">
-    @csrf
-    <button type="submit">Logout</button>
-  </form>
-</body>
-</html>
+<div class="container-fluid px-5 pb-5">
+  <div class="row mt-5 mb-2">
+    <div class="col-6">
+      <div class="card pt-3 card-container">
+        <div class="rounded-circle card-icon-container">
+          <span class="material-symbols-outlined text-white">groups</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-text card-txt">2</h2>
+          <p class="card-title card-ttl">Residents</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card pt-3 card-container">
+        <div class="rounded-circle card-icon-container">
+          <span class="material-symbols-outlined text-white">groups</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-text card-txt">2</h2>
+          <p class="card-title card-ttl">Family Head</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    {{-- <div class="container-fluid bg-white rounded p-4">
+      <div class="d-flex align-items-center pt-3 pb-5">
+        <span class="material-symbols-outlined add-icon fs-2 me-3">groups</span>
+        <button class="bg-transparent border-1 rounded px-3">Add</button>
+      </div>
+      <table class="table border table-striped">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Zone</th>
+            <th class="text-center">Gender</th>
+            <th class="text-center">Birthdate</th>
+            <th class="text-center">Position</th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">1</td>
+            <td class="text-center">Lebron James</td>
+            <td class="text-center">1</td>
+            <td class="text-center">Male</td>
+            <td class="text-center">02/24/1990</td>
+            <td class="text-center">Barangay Captain</td>
+            <td class="text-center">
+              <a href="#">view</a>
+              <a href="#">edit</a>
+              <a href="#">delete</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">1</td>
+            <td class="text-center">Lebron James</td>
+            <td class="text-center">1</td>
+            <td class="text-center">Male</td>
+            <td class="text-center">02/24/1990</td>
+            <td class="text-center">Barangay Captain</td>
+            <td class="text-center">
+              <a href="#">view</a>
+              <a href="#">edit</a>
+              <a href="#">delete</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">1</td>
+            <td class="text-center">Lebron James</td>
+            <td class="text-center">1</td>
+            <td class="text-center">Male</td>
+            <td class="text-center">02/24/1990</td>
+            <td class="text-center">Barangay Captain</td>
+            <td class="text-center">
+              <a href="#">view</a>
+              <a href="#">edit</a>
+              <a href="#">delete</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">1</td>
+            <td class="text-center">Lebron James</td>
+            <td class="text-center">1</td>
+            <td class="text-center">Male</td>
+            <td class="text-center">02/24/1990</td>
+            <td class="text-center">Barangay Captain</td>
+            <td class="text-center">
+              <a href="#">view</a>
+              <a href="#">edit</a>
+              <a href="#">delete</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">1</td>
+            <td class="text-center">Lebron James</td>
+            <td class="text-center">1</td>
+            <td class="text-center">Male</td>
+            <td class="text-center">02/24/1990</td>
+            <td class="text-center">Barangay Captain</td>
+            <td class="text-center">
+              <a href="#">view</a>
+              <a href="#">edit</a>
+              <a href="#">delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div> --}}
+  </div>
+</div>
